@@ -1,0 +1,6 @@
+{
+  "name": "OPHIDIA SUPRÊME : LE SERPENT TITANESQUE",
+  "description": "Campagne publicitaire mobile-first et responsive haute intensité mettant en scène le combat mythique contre le Serpent Suprême.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
