@@ -3,6 +3,7 @@ import { Play, Sparkles, Shield, Flame, Users, ChevronRight, CheckCircle2, Award
 import { sound } from '../utils/audio';
 import { AdConfig, Language } from '../types';
 import pinImage from '../assets/pin_image.jpg';
+import { AdBanner728x90 } from './AdBanner728x90';
 
 interface LandingExperienceProps {
   config: AdConfig;
@@ -450,6 +451,11 @@ export const LandingExperience: React.FC<LandingExperienceProps> = ({ config, la
           ))}
         </div>
       </section>
+
+      {/* 5.b Responsive 728x90 Leaderboard Ad Section */}
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <AdBanner728x90 />
+      </div>
 
       {/* 6. Weapons & Lore */}
       <section className="py-16 px-6 bg-slate-900/40 border-y border-slate-800">

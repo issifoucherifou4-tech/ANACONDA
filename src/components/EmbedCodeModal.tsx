@@ -18,7 +18,7 @@ export const EmbedCodeModal: React.FC<EmbedCodeModalProps> = ({
   config,
   lang,
 }) => {
-  const [activeSnippetTab, setActiveSnippetTab] = useState<'iframe' | 'gam' | 'vanilla'>('iframe');
+  const [activeSnippetTab, setActiveSnippetTab] = useState<'iframe' | 'gam' | 'vanilla' | 'banner728'>('iframe');
   const [copied, setCopied] = useState(false);
 
   if (!isOpen) return null;
@@ -66,16 +66,30 @@ export const EmbedCodeModal: React.FC<EmbedCodeModalProps> = ({
   </a>
 </div>`;
 
-    return { iframeSnippet, gamSnippet, vanillaSnippet };
+    const banner728Snippet = `<!-- Bannière Réseau 728x90 Leaderboard -->
+<script type="text/javascript">
+  atOptions = {
+    'key' : 'e46b89563a29755f5dd9e5234213c874',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="https://bicea.org/22/e46b89563a29755f5dd9e5234213c874"></script>`;
+
+    return { iframeSnippet, gamSnippet, vanillaSnippet, banner728Snippet };
   };
 
-  const { iframeSnippet, gamSnippet, vanillaSnippet } = getSnippets();
+  const { iframeSnippet, gamSnippet, vanillaSnippet, banner728Snippet } = getSnippets();
   const currentCode =
     activeSnippetTab === 'iframe'
       ? iframeSnippet
       : activeSnippetTab === 'gam'
       ? gamSnippet
-      : vanillaSnippet;
+      : activeSnippetTab === 'vanilla'
+      ? vanillaSnippet
+      : banner728Snippet;
 
   const handleCopy = () => {
     sound.playClick();
@@ -114,10 +128,10 @@ export const EmbedCodeModal: React.FC<EmbedCodeModalProps> = ({
         </div>
 
         {/* Snippet format selector tabs */}
-        <div className="flex items-center gap-2 my-4 border-b border-slate-800 pb-3">
+        <div className="flex items-center gap-2 my-4 border-b border-slate-800 pb-3 overflow-x-auto">
           <button
             onClick={() => setActiveSnippetTab('iframe')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeSnippetTab === 'iframe'
                 ? 'bg-amber-400 text-slate-950 shadow'
                 : 'text-slate-400 hover:text-white bg-slate-800/60'
@@ -129,26 +143,38 @@ export const EmbedCodeModal: React.FC<EmbedCodeModalProps> = ({
 
           <button
             onClick={() => setActiveSnippetTab('gam')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeSnippetTab === 'gam'
                 ? 'bg-amber-400 text-slate-950 shadow'
                 : 'text-slate-400 hover:text-white bg-slate-800/60'
             }`}
           >
             <Smartphone size={14} />
-            <span>Google Ad Manager / MRAID</span>
+            <span>Google Ad Manager</span>
           </button>
 
           <button
             onClick={() => setActiveSnippetTab('vanilla')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeSnippetTab === 'vanilla'
                 ? 'bg-amber-400 text-slate-950 shadow'
                 : 'text-slate-400 hover:text-white bg-slate-800/60'
             }`}
           >
             <Terminal size={14} />
-            <span>HTML5 Vanilla Card</span>
+            <span>HTML5 Vanilla</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSnippetTab('banner728')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors whitespace-nowrap ${
+              activeSnippetTab === 'banner728'
+                ? 'bg-amber-400 text-slate-950 shadow'
+                : 'text-slate-400 hover:text-white bg-slate-800/60'
+            }`}
+          >
+            <Code size={14} />
+            <span>Bannière 728x90</span>
           </button>
         </div>
 

@@ -26,6 +26,7 @@ import { LandingExperience } from './components/LandingExperience';
 import { PreRegisterModal } from './components/PreRegisterModal';
 import { EmbedCodeModal } from './components/EmbedCodeModal';
 import { AdSettingsDrawer } from './components/AdSettingsDrawer';
+import { AdBanner728x90 } from './components/AdBanner728x90';
 import { AdConfig, AdFormat, DEFAULT_CONFIG, DeviceMode, Language } from './types';
 import { sound } from './utils/audio';
 import pinImage from './assets/pin_image.jpg';
@@ -490,6 +491,11 @@ export default function App() {
           </div>
         )}
       </main>
+
+      {/* 728x90 Leaderboard Ad Banner (Responsive) */}
+      <div className="w-full max-w-7xl mx-auto px-4 z-10">
+        <AdBanner728x90 />
+      </div>
 
       {/* 4. Quiet Footer adhering to Constitution */}
       <footer className="bg-slate-950 border-t border-slate-800/80 px-6 py-6 text-center text-xs text-slate-500">
