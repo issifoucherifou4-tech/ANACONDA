@@ -33,8 +33,8 @@ import pinImage from './assets/pin_image.jpg';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('fr');
-  const [format, setFormat] = useState<AdFormat>('story');
-  const [device, setDevice] = useState<DeviceMode>('mobile');
+  const [format, setFormat] = useState<AdFormat>('landing');
+  const [device, setDevice] = useState<DeviceMode>('desktop');
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [luminosityMode, setLuminosityMode] = useState<'radiant' | 'vibrant' | 'natural'>('radiant');
   const [config, setConfig] = useState<AdConfig>(DEFAULT_CONFIG.fr);
@@ -53,13 +53,6 @@ export default function App() {
   const handleFormatChange = (newFormat: AdFormat) => {
     sound.playClick();
     setFormat(newFormat);
-    // If user switches to full landing page, auto-switch to desktop for best view, though they can toggle back
-    if (newFormat === 'landing' && device === 'mobile') {
-      setDevice('desktop');
-    }
-    if ((newFormat === 'story' || newFormat === 'playable') && device === 'desktop') {
-      setDevice('mobile');
-    }
   };
 
   const handleDeviceChange = (newDevice: DeviceMode) => {

@@ -563,24 +563,53 @@ export const LandingExperience: React.FC<LandingExperienceProps> = ({ config, la
         </div>
       </section>
 
-      {/* Lightbox Modal for Serpent View */}
+      {/* Desktop Lightbox & 4K Image Theater */}
       {selectedSerpentView && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
           onClick={() => setSelectedSerpentView(null)}
         >
-          <div className="relative max-w-3xl w-full bg-slate-900 rounded-3xl border border-slate-700 overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-              <span className="font-title font-bold text-white text-sm">{selectedSerpentView}</span>
-              <button
-                onClick={() => setSelectedSerpentView(null)}
-                className="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center"
-              >
-                <X size={16} />
-              </button>
+          <div
+            className="relative max-w-5xl w-full bg-slate-900 rounded-3xl border border-amber-400/40 overflow-hidden shadow-[0_0_80px_rgba(245,158,11,0.25)] flex flex-col max-h-[92vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
+              <div className="flex items-center gap-3">
+                <span className="font-title font-bold text-white text-base text-gradient-gold">
+                  {selectedSerpentView}
+                </span>
+                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  Affichage Haute Définition PC (4K)
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href={pinImage}
+                  download="Ophidia-Supreme-Wallpaper.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-md"
+                >
+                  <Download size={14} />
+                  <span>{lang === 'fr' ? 'Télécharger l’image' : 'Download HD Image'}</span>
+                </a>
+
+                <button
+                  onClick={() => setSelectedSerpentView(null)}
+                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <X size={16} />
+                </button>
+              </div>
             </div>
-            <div className="aspect-[4/3] bg-black">
-              <img src={pinImage} alt={selectedSerpentView} className="w-full h-full object-contain" />
+
+            <div className="relative flex-1 overflow-auto bg-black flex items-center justify-center p-4">
+              <img
+                src={pinImage}
+                alt={selectedSerpentView}
+                className="max-h-[75vh] w-auto object-contain rounded-xl shadow-2xl filter brightness-105 contrast-105"
+              />
             </div>
           </div>
         </div>
