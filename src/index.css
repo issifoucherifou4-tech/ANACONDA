@@ -55,15 +55,63 @@
   box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 35px -5px rgba(245, 158, 11, 0.18);
 }
 
-/* Radiant Sunbeam & Jungle Glow */
-@keyframes sunbeamShift {
-  0%, 100% {
-    opacity: 0.4;
-    transform: rotate(-15deg) translateY(-10px);
+/* Video Trending Animations (Ken Burns, Reel Motion, Glitch & Flares) */
+@keyframes kenburnsZoom {
+  0% {
+    transform: scale(1) translate(0, 0);
   }
   50% {
-    opacity: 0.75;
-    transform: rotate(-13deg) translateY(10px);
+    transform: scale(1.12) translate(-1.5%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+@keyframes kenburnsPan {
+  0% {
+    transform: scale(1.08) translate(1%, 0);
+  }
+  50% {
+    transform: scale(1.16) translate(-1.5%, -1.5%);
+  }
+  100% {
+    transform: scale(1.08) translate(1%, 0);
+  }
+}
+
+@keyframes audioWave {
+  0%, 100% {
+    height: 4px;
+  }
+  50% {
+    height: 18px;
+  }
+}
+
+@keyframes recBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes flareSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+    opacity: 0;
   }
 }
 
@@ -90,12 +138,20 @@
   }
 }
 
-.animate-sunbeam {
-  animation: sunbeamShift 8s ease-in-out infinite;
+.animate-video-kenburns {
+  animation: kenburnsZoom 14s ease-in-out infinite alternate;
 }
 
-.animate-slash {
-  animation: slashSweep 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-video-pan {
+  animation: kenburnsPan 18s ease-in-out infinite alternate;
+}
+
+.animate-rec-blink {
+  animation: recBlink 1.2s ease-in-out infinite;
+}
+
+.animate-flare {
+  animation: flareSweep 6s ease-in-out infinite;
 }
 
 .gold-sheen-btn {

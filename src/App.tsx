@@ -17,7 +17,8 @@ import {
   Flame,
   Globe,
   Share2,
-  Sun
+  Sun,
+  Film
 } from 'lucide-react';
 import { StoryAd } from './components/StoryAd';
 import { FeedAdCard } from './components/FeedAdCard';
@@ -27,6 +28,7 @@ import { PreRegisterModal } from './components/PreRegisterModal';
 import { EmbedCodeModal } from './components/EmbedCodeModal';
 import { AdSettingsDrawer } from './components/AdSettingsDrawer';
 import { AdBanner728x90 } from './components/AdBanner728x90';
+import { FilmAudioPlayer } from './components/FilmAudioPlayer';
 import { AdConfig, AdFormat, DEFAULT_CONFIG, DeviceMode, Language } from './types';
 import { sound } from './utils/audio';
 import pinImage from './assets/pin_image.jpg';
@@ -36,6 +38,7 @@ export default function App() {
   const [format, setFormat] = useState<AdFormat>('landing');
   const [device, setDevice] = useState<DeviceMode>('desktop');
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+  const [videoMotion, setVideoMotion] = useState<boolean>(true);
   const [luminosityMode, setLuminosityMode] = useState<'radiant' | 'vibrant' | 'natural'>('radiant');
   const [config, setConfig] = useState<AdConfig>(DEFAULT_CONFIG.fr);
 
@@ -229,6 +232,23 @@ export default function App() {
           >
             <Sun size={14} className="text-amber-400 animate-spin-slow" />
             <span className="tabular-nums font-mono">{getLuminosityLabel()}</span>
+          </button>
+
+          {/* Live Video Motion Trend Toggle */}
+          <button
+            onClick={() => {
+              sound.playClick();
+              setVideoMotion(!videoMotion);
+            }}
+            className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 shadow-md ${
+              videoMotion
+                ? 'bg-rose-500/20 border-rose-400 text-rose-300 shadow-[0_0_15px_rgba(244,63,94,0.25)]'
+                : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white'
+            }`}
+            title={lang === 'fr' ? 'Activer/Désactiver l’effet vidéo tendance' : 'Toggle cinematic video motion'}
+          >
+            <Film size={14} className={videoMotion ? 'text-rose-400 animate-pulse' : 'text-slate-400'} />
+            <span>{videoMotion ? (lang === 'fr' ? 'Mouvement Vidéo : Actif' : 'Video Motion: ON') : (lang === 'fr' ? 'Mouvement Vidéo : Pause' : 'Video Motion: OFF')}</span>
           </button>
 
           {/* Device Dimensions Toggle */}
@@ -536,6 +556,9 @@ export default function App() {
         onChangeConfig={setConfig}
         lang={lang}
       />
+
+      {/* Floating Cinematic Film Soundtrack Player */}
+      <FilmAudioPlayer />
     </div>
   );
 }

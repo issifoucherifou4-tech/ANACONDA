@@ -145,7 +145,7 @@ export const StoryAd: React.FC<StoryAdProps> = ({ config, lang, onOpenRegister }
         src={pinImage}
         alt="Serpent Géant Titanesque en plein combat"
         referrerPolicy="no-referrer"
-        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
+        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out animate-video-kenburns ${
           storySlides[activeSlide].zoomClass
         } ${isSlashing ? 'filter brightness-135 contrast-125' : 'filter brightness-112 contrast-105 saturate-115'}`}
       />

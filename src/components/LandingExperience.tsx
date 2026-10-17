@@ -4,6 +4,7 @@ import { sound } from '../utils/audio';
 import { AdConfig, Language } from '../types';
 import pinImage from '../assets/pin_image.jpg';
 import { AdBanner728x90 } from './AdBanner728x90';
+import { VideoTrendingSection } from './VideoTrendingSection';
 
 interface LandingExperienceProps {
   config: AdConfig;
@@ -153,7 +154,7 @@ export const LandingExperience: React.FC<LandingExperienceProps> = ({ config, la
             src={pinImage}
             alt="Le Serpent Géant Titanesque et la Guerrière"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center scale-105 filter brightness-105 contrast-105 saturate-115"
+            className="w-full h-full object-cover object-center scale-105 filter brightness-105 contrast-105 saturate-115 animate-video-kenburns"
           />
           {/* Luminous soft ambient gradients */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0d1318]/95 via-[#0d1318]/65 to-transparent/15" />
@@ -272,7 +273,10 @@ export const LandingExperience: React.FC<LandingExperienceProps> = ({ config, la
         </div>
       </section>
 
-      {/* 2. New Dedicated Section: BESTIAIRE & ANATOMIE DU SERPENT TITANESQUE */}
+      {/* 2. Trending Video Reels Section (Tendance Vidéo aux Images) */}
+      <VideoTrendingSection lang={lang} onOpenRegister={onOpenRegister} />
+
+      {/* 3. Dedicated Section: BESTIAIRE & ANATOMIE DU SERPENT TITANESQUE */}
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="text-xs font-bold text-amber-400 uppercase tracking-widest mb-2 font-mono">
